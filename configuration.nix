@@ -61,6 +61,7 @@
     chromium
     rxvt-unicode
     networkmanager-openconnect
+    ripgrep
   ];
 
   fonts.fonts = with pkgs; [
