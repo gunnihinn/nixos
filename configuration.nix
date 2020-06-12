@@ -53,7 +53,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     wget
-    vim
     zsh
     git
     strace
@@ -62,6 +61,12 @@
     rxvt-unicode
     networkmanager-openconnect
     ripgrep
+    (pkgs.vim_configurable.customize {
+      name = "vim";
+      vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
+        start = [ vim-nix ]; # load plugin on startup
+      };
+    })
   ];
 
   fonts.fonts = with pkgs; [
