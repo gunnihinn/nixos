@@ -14,8 +14,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  boot.initrd.luks.devices.crypted.device = "/dev/disk/by-uuid/b8e8115c-a76b-4aa1-97f4-109e0b144be8";
+  fileSystems."/".device = "/dev/mapper/crypted";
+
+  networking.hostName = "booking"; # Define your hostname.
+  networking.networkmanager.enable = true;
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -29,20 +32,40 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
+  console.useXkbConfig = true;
   # console = {
   #   font = "Lat2-Terminus16";
   #   keyMap = "us";
   # };
 
   # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
+  time.timeZone = "Europe/Amsterdam";
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+  system.autoUpgrade.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  #   wget vim
-  # ];
+  environment.systemPackages = with pkgs; [
+    wget
+    vim
+    zsh
+    git
+    strace
+    htop
+    chromium
+    rxvt-unicode
+    networkmanager-openconnect
+  ];
+
+  fonts.fonts = with pkgs; [
+    source-code-pro
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -52,6 +75,24 @@
   #   enableSSHSupport = true;
   #   pinentryFlavor = "gnome3";
   # };
+
+  programs = {
+    zsh = {
+      enable = true;
+      autosuggestions.enable = true;
+      syntaxHighlighting.enable = true;
+    };
+
+    tmux = {
+      enable = true;
+      clock24 = true;
+    };
+
+    gnupg.agent.enable = false;
+    ssh.startAgent = true;
+
+    nm-applet.enable = true;
+  };
 
   # List services that you want to enable:
 
@@ -65,29 +106,31 @@
   # networking.firewall.enable = false;
 
   # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  services.printing.enable = true;
 
   # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
 
   # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-  # services.xserver.layout = "us";
-  # services.xserver.xkbOptions = "eurosign:e";
+  services.xserver = {
+    enable = true;
+    layout = "us";
+    xkbOptions = "caps:ctrl_modifier";
+    displayManager.defaultSession = "none+i3";
+    desktopManager.xterm.enable = false;
+    windowManager.i3.enable = true;
+  };
 
   # Enable touchpad support.
-  # services.xserver.libinput.enable = true;
-
-  # Enable the KDE Desktop Environment.
-  # services.xserver.displayManager.sddm.enable = true;
-  # services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.jane = {
-  #   isNormalUser = true;
-  #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-  # };
+  users.users.gmagnusson = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    shell = pkgs.zsh;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
