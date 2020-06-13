@@ -141,5 +141,7 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "20.03"; # Did you read the comment?
 
+  # https://discourse.nixos.org/t/is-it-possible-to-recover-configuration-nix-from-an-older-generation/2659/6
+  environment.etc."nixos/active".text = config.system.nixos.label;
 }
 
