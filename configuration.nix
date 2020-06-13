@@ -62,6 +62,11 @@
     networkmanager-openconnect
     ripgrep
     vim
+
+    # development
+    jq
+    direnv
+    niv
   ];
 
   fonts.fonts = with pkgs; [
@@ -96,6 +101,7 @@
   };
 
   # List services that you want to enable:
+  services.lorri.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
