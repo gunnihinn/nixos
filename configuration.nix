@@ -99,21 +99,6 @@
     nm-applet.enable = true;
   };
 
-  systemd = {
-    timers.pull-bk = {
-      wantedBy = [ "timers.target" ];
-      partOf = [ "pull-bk.service" ];
-      timerConfig.OnCalendar = "minutely";
-    };
-    services.pull-bk = {
-      serviceConfig = {
-        Type = "oneshot";
-        User = "gmagnusson";
-        ExecStart = "${pkgs.python} /home/gmagnusson/bin/pull-bk-projects";
-      };
-    };
-  };
-
   # List services that you want to enable:
   services.lorri.enable = true;
 
