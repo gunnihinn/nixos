@@ -102,6 +102,14 @@
   # List services that you want to enable:
   services.lorri.enable = true;
 
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      "*/10 * * * *   gmagnusson  $HOME/bin/pull-bk-projects 2>&1 >> $HOME/cron.log"
+      "0,30 * * * *   gmagnusson  $HOME/bin/get-bk-projects 2>&1 >> $HOME/cron.log"
+    ];
+  };
+
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
