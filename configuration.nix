@@ -109,7 +109,7 @@
       serviceConfig = {
         Type = "oneshot";
         User = "gmagnusson";
-        ExecStart = "/home/gmagnusson/bin/pull-bk-projects";
+        ExecStart = "${pkgs.python} /home/gmagnusson/bin/pull-bk-projects";
       };
     };
   };
