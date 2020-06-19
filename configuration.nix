@@ -157,6 +157,7 @@
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${pkgs.isync}/bin/mbsync -a";
+      ExecStartPost = "${pkgs.notmuch}/bin/notmuch new";
     };
   };
 
