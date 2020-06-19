@@ -62,11 +62,6 @@
     vim
     zsh
 
-    # email
-    isync
-    msmtp
-    notmuch
-
     # sysadmin
     htop
     strace
@@ -139,21 +134,6 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
-  };
-
-  systemd.user.services.mbsync = {
-    description = "Fetch user email";
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${pkgs.isync}/bin/mbsync -a";
-      ExecStartPost = "${pkgs.notmuch}/bin/notmuch new";
-    };
-  };
-
-  systemd.user.timers.mbsync = {
-    wantedBy = [ "timers.target" ];
-    partOf = [ "mbsync.service" ];
-    timerConfig.OnCalendar = "*:0/5";
   };
 
   # This value determines the NixOS release from which the default

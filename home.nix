@@ -14,6 +14,7 @@
   };
 
   home.packages = with pkgs; [
+    # development
     asciidoctor
     dhall
     dhall-json
@@ -21,9 +22,19 @@
     jq
     niv
     ripgrep
+
+    # email
+    isync
+    msmtp
+    notmuch
   ];
 
   services.lorri.enable = true;
+
+  services.mbsync = {
+    enable = true;
+    postExec = "${pkgs.notmuch}/bin/notmuch new";
+  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
