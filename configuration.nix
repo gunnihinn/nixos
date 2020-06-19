@@ -52,6 +52,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     wget
+    zsh
     git
     strace
     htop
@@ -67,8 +68,6 @@
     niv
   ];
 
-  environment.pathsToLink = [ "/share/zsh" ];
-
   fonts.fonts = with pkgs; [
     source-code-pro
   ];
@@ -83,6 +82,12 @@
   # };
 
   programs = {
+    zsh = {
+      enable = true;
+      autosuggestions.enable = true;
+      syntaxHighlighting.enable = true;
+    };
+
     tmux = {
       enable = true;
       clock24 = true;
