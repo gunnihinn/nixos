@@ -152,6 +152,23 @@
     shell = pkgs.zsh;
   };
 
+  systemd.user.services.mbsync = {
+    description = "Fetch user email";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.isync}/bin/mbsync -a";
+    };
+  };
+
+  systemd.user.timers.mbsync = {
+    wantedBy = [ "timers.target" ];
+    partOf = [ "mbsync.service" ];
+    timerConfig = {
+      OnBootSec = "2m";
+      OnUnitActiveSec = "5m";
+    };
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
