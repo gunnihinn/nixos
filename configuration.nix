@@ -163,10 +163,7 @@
   systemd.user.timers.mbsync = {
     wantedBy = [ "timers.target" ];
     partOf = [ "mbsync.service" ];
-    timerConfig = {
-      OnBootSec = "2m";
-      OnUnitActiveSec = "5m";
-    };
+    timerConfig.OnCalendar = "*:0/5";
   };
 
   # This value determines the NixOS release from which the default
