@@ -54,18 +54,20 @@
     wget
     zsh
     git
-    strace
-    htop
     chromium
     rxvt-unicode
     networkmanager-openconnect
-    ripgrep
     vim
 
     # development
     jq
     direnv
     niv
+    ripgrep
+    strace
+    htop
+    tree
+    asciidoctor
   ];
 
   fonts.fonts = with pkgs; [
