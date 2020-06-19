@@ -71,6 +71,7 @@
     # development
     asciidoctor
     dhall
+    dhall-json
     direnv
     jq
     niv
