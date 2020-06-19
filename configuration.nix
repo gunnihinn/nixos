@@ -56,26 +56,29 @@
     networkmanager-openconnect
 
     # user things
+    git
     rxvt-unicode
+    tree
     vim
     zsh
-    git
 
     # email
-    emacs
+    (import ./emacs.nix { inherit pkgs; })
     isync
     msmtp
     notmuch
 
     # development
-    jq
+    asciidoctor
+    dhall
     direnv
+    jq
     niv
     ripgrep
-    strace
+
+    # sysadmin
     htop
-    tree
-    asciidoctor
+    strace
   ];
 
   fonts.fonts = with pkgs; [
