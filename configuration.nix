@@ -52,12 +52,20 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     wget
+    chromium
+    networkmanager-openconnect
+
+    # user things
+    rxvt-unicode
+    vim
     zsh
     git
-    chromium
-    rxvt-unicode
-    networkmanager-openconnect
-    vim
+
+    # email
+    emacs
+    isync
+    msmtp
+    notmuch
 
     # development
     jq
