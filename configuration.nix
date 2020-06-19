@@ -63,7 +63,6 @@
     zsh
 
     # email
-    (import ./emacs.nix { inherit pkgs; })
     isync
     msmtp
     notmuch
