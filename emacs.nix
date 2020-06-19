@@ -9,8 +9,11 @@ let
   myEmacs = pkgs.emacs;
   emacsWithPackages = (pkgs.emacsPackagesGen myEmacs).emacsWithPackages;
 in
-  emacsWithPackages (epkgs: with epkgs.melpaStablePackages; [
+  emacsWithPackages (epkgs: (with epkgs.melpaStablePackages; [
     magit
-  ] ++ [
+  ]) ++ (with epkgs.melpaPackages; [
+    solarized-theme
+    nix-mode
+  ]) ++ [
     pkgs.notmuch
   ])
