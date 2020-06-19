@@ -67,15 +67,6 @@
     msmtp
     notmuch
 
-    # development
-    asciidoctor
-    dhall
-    dhall-json
-    direnv
-    jq
-    niv
-    ripgrep
-
     # sysadmin
     htop
     strace
