@@ -20,6 +20,7 @@
     dhall-json
     direnv
     gitAndTools.gitFull
+    gitAndTools.tig
     jq
     niv
     ripgrep
