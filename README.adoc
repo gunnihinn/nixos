@@ -13,7 +13,9 @@ sudo ln -s $repo/hardware-configuration.nix /etc/nixos/hardware-configuration.ni
 ln -s $repo/home.nix $HOME/.config/nixpkgs/home.nix
 ----
 
-Then install https://github.com/rycee/home-manager:[Home Manager].
+Then install https://github.com/rycee/home-manager:[Home Manager] and use gpg to
+encrypt the mail password in 1password and write it to
+`$HOME/.mail/fastmail-password.gpg`.
 
 == rebuild-switch
 
