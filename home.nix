@@ -13,6 +13,14 @@
     ];
   };
 
+  services.gpg-agent = {
+    enable = true;
+    enableSshSupport = false;
+    extraConfig = ''
+      pinentry-program = "${pkgs.pinentry}/bin/pinentry"
+      '';
+  };
+
   home.packages = with pkgs; [
     # development
     asciidoctor
@@ -22,11 +30,13 @@
     jq
     niv
     ripgrep
+    sqlite-interactive
 
     # email
     isync
     msmtp
     notmuch
+    pinentry
   ];
 
   services.lorri.enable = true;

@@ -92,7 +92,6 @@
       clock24 = true;
     };
 
-    gnupg.agent.enable = false;
     ssh.startAgent = true;
 
     nm-applet.enable = true;
