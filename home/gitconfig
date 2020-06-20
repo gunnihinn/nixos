@@ -1,0 +1,27 @@
+[user]
+    name = 'Gunnar Þór Magnússon'
+    email = gunnar.magnusson@booking.com
+
+[alias]
+    co = checkout
+    ci = commit
+    cp = cherry-pick
+    st = status
+    br = branch
+    df = diff --patience -w
+    short = rev-parse --short
+
+[color]
+    ui = auto
+    diff = auto
+    status = auto
+    branch = auto
+
+[log]
+    decorate = auto
+
+[core]
+    editor = vim
+
+[url "ssh://git@gitlab.booking.com/"]
+    insteadOf = https://gitlab.booking.com/

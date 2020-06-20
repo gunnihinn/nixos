@@ -1,0 +1,24 @@
+IMAPAccount fastmail
+Host imap.fastmail.com
+Port 993
+User gunnar@magnusson.io
+PassCmd "/home/gmagnusson/.nix-profile/bin/gpg -q --for-your-eyes-only --no-tty -d ~/.mail/fastmail-password.gpg"
+SSLType IMAPS
+# CertificateFile /usr/local/share/certs/ca-root-nss.crt
+
+IMAPStore fastmail-remote
+Account fastmail
+
+MaildirStore fastmail-local
+Path ~/.mail/fastmail/
+Inbox ~/.mail/fastmail/INBOX
+SubFolders Legacy
+
+Channel fastmail
+Master :fastmail-remote:
+Slave :fastmail-local:
+Patterns "INBOX" "*"
+Create Slave
+Sync All
+Expunge Both
+SyncState *
