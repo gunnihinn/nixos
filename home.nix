@@ -19,6 +19,7 @@
     dhall
     dhall-json
     direnv
+    gitAndTools.gitFull
     jq
     niv
     ripgrep

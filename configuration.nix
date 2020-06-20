@@ -56,7 +56,6 @@
     networkmanager-openconnect
 
     # user things
-    git
     rxvt-unicode
     tree
     vim
