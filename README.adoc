@@ -1,0 +1,22 @@
+= NixOS configuration
+
+This repo contains my NixOS configuration.
+
+== Setup
+
+----
+git clone git@github.com:gunnihinn/nixos.git
+pushd nixos
+export repo=$(pwd)
+sudo ln -s $repo/configuration.nix /etc/nixos/configuration.nix
+sudo ln -s $repo/hardware-configuration.nix /etc/nixos/hardware-configuration.nix
+ln -s $repo/home.nix $HOME/.config/nixpkgs/home.nix
+----
+
+Then install https://github.com/rycee/home-manager:[Home Manager].
+
+== rebuild-switch
+
+Use the `nixos-rebuild-switch` wrapper when updating configuration. It checks
+that we've committed and pushed our changes so if we bork it real bad we can
+undo things.

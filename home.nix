@@ -44,6 +44,7 @@
   };
 
   home.file = {
+    "bin/nixos-rebuild-switch".source = ./home/nixos-rebuild-switch.sh;
     ".msmtprc".source = ./home/msmtprc;
     ".mbsyncrc".source = ./home/mbsyncrc;
     ".notmuch-config".source = ./home/notmuch-config;
