@@ -51,6 +51,7 @@
     ".tmux.conf".source = ./home/tmux.conf;
     ".zshrc".source = ./home/zshrc;
     ".gitconfig".source = ./home/gitconfig;
+    "git/.gitconfig".source = ./home/booking-gitconfig;
 
     ".emacs".source = ./home/emacs;
     ".vimrc".source = ./home/vimrc;

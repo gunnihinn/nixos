@@ -1,0 +1,5 @@
+[user]
+    email = gunnar.magnusson@booking.com
+
+[url "ssh://git@gitlab.booking.com/"]
+    insteadOf = https://gitlab.booking.com/

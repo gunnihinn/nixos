@@ -1,6 +1,6 @@
 [user]
     name = 'Gunnar Þór Magnússon'
-    email = gunnar.magnusson@booking.com
+    email = gunnar@magnusson.io
 
 [alias]
     co = checkout
@@ -23,5 +23,5 @@
 [core]
     editor = vim
 
-[url "ssh://git@gitlab.booking.com/"]
-    insteadOf = https://gitlab.booking.com/
+[includeIf "gitdir:~/git/"]
+    path = ~/git/.gitconfig
