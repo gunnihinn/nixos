@@ -1,6 +1,10 @@
 [user]
     name = 'Gunnar Þór Magnússon'
     email = gunnar@magnusson.io
+    signingkey = F8D855EA208CE83A29147E48D5FE23670466E509
+
+[commit]
+    gpgsign = true
 
 [alias]
     co = checkout
