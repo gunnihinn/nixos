@@ -25,6 +25,9 @@
   # replicates the default behaviour.
   networking.useDHCP = false;
   networking.interfaces.wlo1.useDHCP = true;
+  networking.hosts = {
+    "64.225.73.140" = [ "sky" ];
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
