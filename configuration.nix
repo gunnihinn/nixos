@@ -65,8 +65,14 @@
     zsh
 
     # sysadmin
+    bind
     htop
+    inetutils
+    netcat
+    ngrep
     strace
+    tcpdump
+    traceroute
   ];
 
   fonts.fonts = with pkgs; [
