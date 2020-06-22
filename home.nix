@@ -7,6 +7,7 @@
   programs.emacs = {
     enable = true;
     extraPackages = epkgs: [
+      epkgs.go-mode
       epkgs.magit
       epkgs.nix-mode
       epkgs.solarized-theme
