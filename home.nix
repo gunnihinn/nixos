@@ -47,6 +47,8 @@
 
   home.file = {
     "bin/nixos-rebuild-switch".source = ./home/nixos-rebuild-switch.sh;
+    "bin/git-git".source = ./home/git-git.sh;
+
     ".msmtprc".source = ./home/msmtprc;
     ".mbsyncrc".source = ./home/mbsyncrc;
     ".notmuch-config".source = ./home/notmuch-config;
