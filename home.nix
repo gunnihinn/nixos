@@ -4,9 +4,15 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  # I have to look this up every time:
+  #   nix-env -f '<nixpkgs>' -qaP -A emacsPackages
+  # See also:
+  #   man home-configuration.nix
+  #   https://nixos.org/nixos/manual/index.html#module-services-emacs
   programs.emacs = {
     enable = true;
     extraPackages = epkgs: [
+      epkgs.visual-fill-column
       epkgs.go-mode
       epkgs.magit
       epkgs.nix-mode
