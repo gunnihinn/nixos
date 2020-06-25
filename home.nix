@@ -28,6 +28,7 @@
     direnv
     gitAndTools.gitFull
     gitAndTools.tig
+    graphviz
     jq
     niv
     ripgrep
