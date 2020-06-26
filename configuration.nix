@@ -134,7 +134,11 @@
   };
 
   # Enable touchpad support.
-  services.xserver.libinput.enable = true;
+  services.xserver.libinput = {
+    enable = true;
+    disableWhileTyping = true;
+    sendEventsMode = "disabled-on-external-mouse";
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.gmagnusson = {
