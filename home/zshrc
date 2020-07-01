@@ -22,7 +22,10 @@ bindkey -e
 
 alias grep='grep --color=auto'
 
+export GOPATH="$HOME/.go"
+
 PATH="$HOME/bin:$PATH"
+PATH="$GOPATH/bin:$PATH"
 export PATH
 
 alias ls='ls --color=auto -F --group-directories-first'
