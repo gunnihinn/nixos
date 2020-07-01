@@ -12,7 +12,10 @@
   programs.emacs = {
     enable = true;
     extraPackages = epkgs: [
+      epkgs.adoc-mode
       epkgs.visual-fill-column
+      epkgs.go-errcheck
+      epkgs.go-imports
       epkgs.go-mode
       epkgs.magit
       epkgs.nix-mode
@@ -26,12 +29,14 @@
     dhall
     dhall-json
     direnv
+    file
     gitAndTools.gitFull
     gitAndTools.tig
     graphviz
     jq
     niv
     ripgrep
+    psmisc
     sqlite-interactive
 
     # email
@@ -51,6 +56,18 @@
   services.mbsync = {
     enable = true;
     postExec = "${pkgs.notmuch}/bin/notmuch new";
+  };
+
+  services.spotifyd = {
+    enable = true;
+    settings = {
+      global = {
+        username = "gunnar@magnusson.io";
+        password = "pfmiaJKGkqy5p9vVUqga";
+        device_name = "booking";
+        cache_path = "/home/gmagnusson/.cache/spotifyd";
+      };
+    };
   };
 
   home.file = {
