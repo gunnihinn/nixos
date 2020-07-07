@@ -9,14 +9,41 @@
 	  mail-envelope-from 'header
 	  message-sendmail-envelope-from 'header)
 
+(require 'use-package)
+
 (require 'solarized)
-(load-theme 'solarized-light t)
+(load-theme 'solarized-dark t)
+
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+(autoload 'enable-paredit-mode "paredit"
+  "Turn on pseudo-structural editing of Lisp code."
+  t)
+(add-hook 'emacs-lisp-mode-hook       'enable-paredit-mode)
+(add-hook 'lisp-mode-hook             'enable-paredit-mode)
+(add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
+(add-hook 'scheme-mode-hook           'enable-paredit-mode)
 
 (add-hook 'before-save-hook 'gofmt-before-save)
 
 (add-hook 'visual-line-mode-hook #'visual-fill-column-mode)
 (setq visual-fill-column-center-text t)
 (set-fill-column 80)
+
+(add-hook 'after-init-hook 'global-company-mode)
+
+(use-package projectile
+  :commands projectile-mode
+  :bind-keymap* (("C-c p" . projectile-command-map)
+                 ("s-p" . projectile-command-map))
+  :bind (("C-c C-f" . projectile-find-file))
+  :preface
+  ;(autoload 'projectile-project-vcs "projectile")
+  ;(autoload 'projectile-project-root "projectile")
+  ;(autoload 'easy-menu-define "easymenu" "" nil 'macro)
+  :demand
+  :config
+  (projectile-mode))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

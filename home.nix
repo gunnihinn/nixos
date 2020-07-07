@@ -13,13 +13,22 @@
     enable = true;
     extraPackages = epkgs: [
       epkgs.adoc-mode
-      epkgs.visual-fill-column
+      epkgs.company
+      epkgs.company-go
+      epkgs.company-nixos-options
+      epkgs.flycheck
       epkgs.go-errcheck
       epkgs.go-imports
       epkgs.go-mode
+      epkgs.go-projectile
       epkgs.magit
       epkgs.nix-mode
+      epkgs.paredit
+      epkgs.projectile
+      epkgs.rainbow-delimiters
       epkgs.solarized-theme
+      epkgs.use-package
+      epkgs.visual-fill-column
     ];
   };
 
@@ -38,6 +47,12 @@
     ripgrep
     psmisc
     sqlite-interactive
+
+    # go
+    go
+    godef
+    gometalinter
+    delve
 
     # email
     (gnupg.override {
