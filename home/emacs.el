@@ -1,3 +1,6 @@
+(require 'package)
+(package-initialize)
+
 (require 'notmuch)
 
 (setq user-full-name "Gunnar Þór Magnússon")
@@ -23,6 +26,13 @@
 (add-hook 'lisp-mode-hook             'enable-paredit-mode)
 (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
 (add-hook 'scheme-mode-hook           'enable-paredit-mode)
+
+(use-package graphviz-dot-mode
+  :ensure t
+  :config
+  (setq graphviz-dot-indent-width 4))
+
+(use-package company-graphviz-dot)
 
 (add-hook 'before-save-hook 'gofmt-before-save)
 

@@ -11,25 +11,27 @@
   #   https://nixos.org/nixos/manual/index.html#module-services-emacs
   programs.emacs = {
     enable = true;
-    extraPackages = epkgs: [
-      epkgs.adoc-mode
-      epkgs.company
-      epkgs.company-go
-      epkgs.company-nixos-options
-      epkgs.flycheck
-      epkgs.go-errcheck
-      epkgs.go-imports
-      epkgs.go-mode
-      epkgs.go-projectile
-      epkgs.magit
-      epkgs.nix-mode
-      epkgs.paredit
-      epkgs.projectile
-      epkgs.rainbow-delimiters
-      epkgs.solarized-theme
-      epkgs.use-package
-      epkgs.visual-fill-column
-    ];
+    extraPackages = epkgs: (with epkgs; [
+      adoc-mode
+      company
+      company-go
+      company-nixos-options
+      dhall-mode
+      flycheck
+      go-errcheck
+      go-imports
+      go-mode
+      go-projectile
+      graphviz-dot-mode
+      magit
+      nix-mode
+      paredit
+      projectile
+      rainbow-delimiters
+      solarized-theme
+      use-package
+      visual-fill-column
+    ]);
   };
 
   home.packages = with pkgs; [
@@ -39,6 +41,7 @@
     dhall-json
     direnv
     file
+    gnumake
     gitAndTools.gitFull
     gitAndTools.tig
     graphviz
@@ -97,8 +100,9 @@
     ".zshrc".source = ./home/zshrc;
     ".gitconfig".source = ./home/gitconfig;
     "git/.gitconfig".source = ./home/booking-gitconfig;
+    ".gitignore_global".source = ./home/gitignore_global;
 
-    ".emacs".source = ./home/emacs;
+    ".emacs".source = ./home/emacs.el;
     ".vimrc".source = ./home/vimrc;
 
     ".Xresources".source = ./home/Xresources;
