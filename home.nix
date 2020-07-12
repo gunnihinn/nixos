@@ -66,6 +66,8 @@
     msmtp
     notmuch
     pinentry-curses
+
+    mkpasswd
   ];
 
   services.gpg-agent.enable = true;
@@ -86,26 +88,6 @@
         cache_path = "/home/gmagnusson/.cache/spotifyd";
       };
     };
-  };
-
-  home.file = {
-    "bin/nixos-rebuild-switch".source = ./home/nixos-rebuild-switch.sh;
-    "bin/git-git".source = ./home/git-git.sh;
-
-    ".msmtprc".source = ./home/msmtprc;
-    ".mbsyncrc".source = ./home/mbsyncrc;
-    ".notmuch-config".source = ./home/notmuch-config;
-
-    ".tmux.conf".source = ./home/tmux.conf;
-    ".zshrc".source = ./home/zshrc;
-    ".gitconfig".source = ./home/gitconfig;
-    "git/.gitconfig".source = ./home/booking-gitconfig;
-    ".gitignore_global".source = ./home/gitignore_global;
-
-    ".emacs".source = ./home/emacs.el;
-    ".vimrc".source = ./home/vimrc;
-
-    ".Xresources".source = ./home/Xresources;
   };
 
   # This value determines the Home Manager release that your
