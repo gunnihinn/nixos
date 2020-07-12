@@ -4,37 +4,6 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  # I have to look this up every time:
-  #   nix-env -f '<nixpkgs>' -qaP -A emacsPackages
-  # See also:
-  #   man home-configuration.nix
-  #   https://nixos.org/nixos/manual/index.html#module-services-emacs
-  programs.emacs = {
-    enable = true;
-    extraPackages = epkgs:
-      (with epkgs; [
-        adoc-mode
-        company
-        company-go
-        company-nixos-options
-        dhall-mode
-        flycheck
-        go-errcheck
-        go-imports
-        go-mode
-        go-projectile
-        graphviz-dot-mode
-        magit
-        nix-mode
-        paredit
-        projectile
-        rainbow-delimiters
-        solarized-theme
-        use-package
-        visual-fill-column
-      ]);
-  };
-
   services.gpg-agent.enable = true;
   services.lorri.enable = true;
 

@@ -27,6 +27,7 @@
       dhall
       dhall-json
       direnv
+      (import ./emacs.nix { inherit pkgs; })
       file
       gnumake
       gitAndTools.gitFull
