@@ -34,42 +34,6 @@
     ]);
   };
 
-  home.packages = with pkgs; [
-    # development
-    asciidoctor
-    dhall
-    dhall-json
-    direnv
-    file
-    gnumake
-    gitAndTools.gitFull
-    gitAndTools.tig
-    graphviz
-    jq
-    niv
-    ripgrep
-    psmisc
-    sqlite-interactive
-
-    # go
-    go
-    godef
-    gometalinter
-    delve
-
-    # email
-    (gnupg.override {
-      guiSupport = true;
-      pinentry = pinentry-curses;
-    })
-    isync
-    msmtp
-    notmuch
-    pinentry-curses
-
-    mkpasswd
-  ];
-
   services.gpg-agent.enable = true;
   services.lorri.enable = true;
 
