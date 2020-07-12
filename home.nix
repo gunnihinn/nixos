@@ -11,27 +11,28 @@
   #   https://nixos.org/nixos/manual/index.html#module-services-emacs
   programs.emacs = {
     enable = true;
-    extraPackages = epkgs: (with epkgs; [
-      adoc-mode
-      company
-      company-go
-      company-nixos-options
-      dhall-mode
-      flycheck
-      go-errcheck
-      go-imports
-      go-mode
-      go-projectile
-      graphviz-dot-mode
-      magit
-      nix-mode
-      paredit
-      projectile
-      rainbow-delimiters
-      solarized-theme
-      use-package
-      visual-fill-column
-    ]);
+    extraPackages = epkgs:
+      (with epkgs; [
+        adoc-mode
+        company
+        company-go
+        company-nixos-options
+        dhall-mode
+        flycheck
+        go-errcheck
+        go-imports
+        go-mode
+        go-projectile
+        graphviz-dot-mode
+        magit
+        nix-mode
+        paredit
+        projectile
+        rainbow-delimiters
+        solarized-theme
+        use-package
+        visual-fill-column
+      ]);
   };
 
   services.gpg-agent.enable = true;

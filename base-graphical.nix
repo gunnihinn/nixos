@@ -1,10 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ./base.nix
-  ];
-  
+  imports = [ ./base.nix ];
+
   console.useXkbConfig = true;
 
   networking.networkmanager.enable = true;

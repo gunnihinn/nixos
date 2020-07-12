@@ -5,25 +5,23 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./base-graphical.nix
-      ./user.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./base-graphical.nix
+    ./user.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.luks.devices.crypted.device = "/dev/disk/by-uuid/b8e8115c-a76b-4aa1-97f4-109e0b144be8";
+  boot.initrd.luks.devices.crypted.device =
+    "/dev/disk/by-uuid/b8e8115c-a76b-4aa1-97f4-109e0b144be8";
   fileSystems."/".device = "/dev/mapper/crypted";
 
   networking.hostName = "booking"; # Define your hostname.
   networking.interfaces.wlo1.useDHCP = true;
-  networking.hosts = {
-    "64.225.73.140" = [ "sky" ];
-  };
+  networking.hosts = { "64.225.73.140" = [ "sky" ]; };
 
   time.timeZone = "Europe/Amsterdam";
 

@@ -7,7 +7,7 @@
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
-  
+
   nix.gc = {
     automatic = true;
     dates = "weekly";
