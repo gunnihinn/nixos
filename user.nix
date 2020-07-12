@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   programs.zsh = {
@@ -12,11 +12,7 @@
     isNormalUser = true;
     createHome = true;
     home = "/home/gmagnusson";
-    extraGroups = [ "wheel" ]
-      ++ (if config.networking.networkmanager.enable then
-        [ "networkmanager" ]
-      else
-        [ ]);
+    extraGroups = [ "wheel" ] ++ (lib.lists.optional config.networking.networkmanager.enable "networkmanager");
     hashedPassword =
       "$6$7TkR9F7GceODYc$CAv6rRm6BrY..7kYAff7Z0ZzOo9xADGxzfIB5a2sGBhCKysopt6hyo2A1cObHAlyc9GJyOphpFZfj8iZ4orVL.";
     shell = pkgs.zsh;
