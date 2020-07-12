@@ -4,24 +4,9 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  services.gpg-agent.enable = true;
-  services.lorri.enable = true;
-
   services.mbsync = {
     enable = true;
     postExec = "${pkgs.notmuch}/bin/notmuch new";
-  };
-
-  services.spotifyd = {
-    enable = true;
-    settings = {
-      global = {
-        username = "gunnar@magnusson.io";
-        password = "pfmiaJKGkqy5p9vVUqga";
-        device_name = "booking";
-        cache_path = "/home/gmagnusson/.cache/spotifyd";
-      };
-    };
   };
 
   # This value determines the Home Manager release that your
