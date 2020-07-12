@@ -13,6 +13,18 @@
 
   services.lorri.enable = true;
 
+  systemd.user.services.mbsync = {
+    serviceConfig.Type = "oneshot";
+    script = "${pkgs.isync}/bin/mbsync -a";
+    postStart = "${pkgs.notmuch}/bin/notmuch new";
+  };
+
+  systemd.user.timers.mbsync = {
+    wantedBy = [ "timers.target" ];
+    partOf = [ "mbsync.service" ];
+    timerConfig.OnCalendar = "*:0/5";
+  };
+
   users.users.gmagnusson = {
     description = "Gunnar Þór Magnússon";
     isNormalUser = true;

@@ -4,11 +4,6 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  services.mbsync = {
-    enable = true;
-    postExec = "${pkgs.notmuch}/bin/notmuch new";
-  };
-
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
