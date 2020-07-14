@@ -49,6 +49,7 @@
       gitAndTools.gitFull
       gitAndTools.tig
       graphviz
+      irssi
       jq
       niv
       nixfmt
