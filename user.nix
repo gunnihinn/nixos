@@ -55,6 +55,7 @@
       nixfmt
       ripgrep
       psmisc
+      python39Full
       sqlite-interactive
 
       # go
