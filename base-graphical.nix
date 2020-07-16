@@ -25,7 +25,25 @@
 
   # Enable sound.
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio = {
+    enable = true;
+    package = pkgs.pulseaudioFull;
+  };
+
+  # Enable bluetooth & headphone support
+  hardware.bluetooth = {
+    enable = true;
+    config = {
+      General = {
+        Enable = "Source,Sink,Media,Socket";
+      };
+    };
+  };
+  services.blueman.enable = true;
+  environment.systemPackages = [
+    pkgs.pavucontrol
+    pkgs.vorbis-tools
+  ];
 
   # Enable the X11 windowing system.
   services.xserver = {
