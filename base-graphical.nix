@@ -10,6 +10,7 @@
   environment.systemPackages = with pkgs; [
     chromium
     networkmanager-openconnect
+    mpc_cli
     pavucontrol
     rxvt-unicode
     vorbis-tools
@@ -42,6 +43,20 @@
     };
   };
   services.blueman.enable = true;
+
+  # Enable mpd
+  services.mpd = {
+    enable = true;
+    user = "gmagnusson";
+    group = "users";
+    dataDir = "/home/gmagnusson/mpd";
+    extraConfig = ''
+audio_output {
+  type "pulse"
+  name "pulse audio"
+}
+'';
+  };
 
   # Enable the X11 windowing system.
   services.xserver = {
