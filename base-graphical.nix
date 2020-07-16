@@ -31,6 +31,7 @@
   hardware.pulseaudio = {
     enable = true;
     package = pkgs.pulseaudioFull;
+    extraConfig = "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1";
   };
 
   # Enable bluetooth & headphone support
@@ -53,7 +54,8 @@
     extraConfig = ''
 audio_output {
   type "pulse"
-  name "pulse audio"
+  name "Pulseaudio"
+  server "127.0.0.1"
 }
 '';
   };
