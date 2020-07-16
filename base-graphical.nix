@@ -10,7 +10,9 @@
   environment.systemPackages = with pkgs; [
     chromium
     networkmanager-openconnect
+    pavucontrol
     rxvt-unicode
+    vorbis-tools
   ];
 
   fonts.fonts = with pkgs; [ source-code-pro ];
@@ -40,10 +42,6 @@
     };
   };
   services.blueman.enable = true;
-  environment.systemPackages = [
-    pkgs.pavucontrol
-    pkgs.vorbis-tools
-  ];
 
   # Enable the X11 windowing system.
   services.xserver = {
