@@ -32,17 +32,14 @@
   hardware.pulseaudio = {
     enable = true;
     package = pkgs.pulseaudioFull;
-    extraConfig = "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1";
+    extraConfig =
+      "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1";
   };
 
   # Enable bluetooth & headphone support
   hardware.bluetooth = {
     enable = true;
-    config = {
-      General = {
-        Enable = "Source,Sink,Media,Socket";
-      };
-    };
+    config = { General = { Enable = "Source,Sink,Media,Socket"; }; };
   };
   services.blueman.enable = true;
 
@@ -53,12 +50,12 @@
     group = "users";
     dataDir = "/home/gmagnusson/mpd";
     extraConfig = ''
-audio_output {
-  type "pulse"
-  name "Pulseaudio"
-  server "127.0.0.1"
-}
-'';
+      audio_output {
+        type "pulse"
+        name "Pulseaudio"
+        server "127.0.0.1"
+      }
+    '';
   };
 
   # Enable the X11 windowing system.
