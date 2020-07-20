@@ -10,6 +10,7 @@
   environment.systemPackages = with pkgs; [
     chromium
     networkmanager-openconnect
+    ncmpcpp
     mpc_cli
     pavucontrol
     rxvt-unicode
