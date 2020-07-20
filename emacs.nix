@@ -29,6 +29,8 @@ in emacsWithPackages (epkgs:
     dhall-mode
     flycheck
     helm
+    helm-projectile
+    helm-rg
     go-errcheck
     go-imports
     go-mode
