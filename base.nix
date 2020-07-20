@@ -1,6 +1,12 @@
 { config, pkgs, ... }:
 
 {
+  # Use cgroups v2
+  boot = {
+    kernelParams =
+      [ "cgroup_no_v1=all" "systemd.unified_cgroup_hierarchy=yes" ];
+  };
+
   i18n.defaultLocale = "en_US.UTF-8";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
