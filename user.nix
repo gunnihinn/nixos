@@ -13,6 +13,11 @@
 
   services.lorri.enable = true;
 
+  services.emacs = {
+    enable = true;
+    package = import ./emacs.nix { inherit pkgs; };
+  };
+
   systemd.user.services.mbsync = {
     serviceConfig.Type = "oneshot";
     script = "${pkgs.isync}/bin/mbsync -a";
@@ -43,7 +48,6 @@
       dhall
       dhall-json
       direnv
-      (import ./emacs.nix { inherit pkgs; })
       file
       gnumake
       gitAndTools.gitFull

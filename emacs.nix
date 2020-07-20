@@ -28,6 +28,7 @@ in emacsWithPackages (epkgs:
     company-nixos-options
     dhall-mode
     flycheck
+    helm
     go-errcheck
     go-imports
     go-mode
