@@ -6,6 +6,9 @@
     kernelParams =
       [ "cgroup_no_v1=all" "systemd.unified_cgroup_hierarchy=yes" ];
   };
+  systemd.services."user@".serviceConfig = {
+    Delegate = "yes";
+  };
 
   i18n.defaultLocale = "en_US.UTF-8";
 
