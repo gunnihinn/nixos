@@ -45,22 +45,37 @@
     packages = with pkgs; [
       # development
       asciidoctor
-      dhall
-      dhall-json
-      direnv
+      clang
       file
       gnumake
       gitAndTools.gitFull
       gitAndTools.tig
       graphviz
       irssi
-      jq
-      niv
-      nixfmt
       ripgrep
       psmisc
       python39Full
+
+      # dhall
+      dhall
+      dhall-json
+
+      # nix
+      direnv
+      nixfmt
+      niv
+
+      # html / webshit
+      html-tidy
+      jq
+
+      # sql
       sqlite-interactive
+      python38Packages.sqlparse
+
+      # shell
+      shfmt
+      shellcheck
 
       # go
       go

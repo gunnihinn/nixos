@@ -28,6 +28,7 @@ in emacsWithPackages (epkgs:
     company-nixos-options
     dhall-mode
     flycheck
+    format-all
     helm
     helm-projectile
     helm-rg
