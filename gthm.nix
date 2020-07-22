@@ -5,14 +5,10 @@
 
   # Use cgroups v2
   boot = {
-    kernelParams = [ 
-      "cgroup_no_v1=all"
-      "systemd.unified_cgroup_hierarchy=yes"
-    ];
+    kernelParams =
+      [ "cgroup_no_v1=all" "systemd.unified_cgroup_hierarchy=yes" ];
   };
-  systemd.services."user@".serviceConfig = {
-    Delegate = "yes";
-  };
+  systemd.services."user@".serviceConfig = { Delegate = "yes"; };
 
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -59,18 +55,29 @@
     };
   };
 
-  users.users.janitor = {
-    isNormalUser = true;
-    createHome = true;
-    home = "/home/janitor";
-    extraGroups = [ "wheel" ];
-    hashedPassword =
-      "$6$3WkR2MG.wn$THIpbgkzOpe2IzOK0MVJG7rH/pYBcQ/84F8wShlR5C003VbkMVQqgEMl5z9ZczSFThGwr94otU1Ce3y2CamBe.";
-    shell = pkgs.zsh;
-    openssh.authorizedKeys.keyFiles = [ ./data/id_gthm.pub ];
-    packages = with pkgs; [
-      git
-    ];
+  users.users = {
+    janitor = {
+      isNormalUser = true;
+      createHome = true;
+      home = "/home/janitor";
+      extraGroups = [ "wheel" ];
+      hashedPassword =
+        "$6$3WkR2MG.wn$THIpbgkzOpe2IzOK0MVJG7rH/pYBcQ/84F8wShlR5C003VbkMVQqgEMl5z9ZczSFThGwr94otU1Ce3y2CamBe.";
+      shell = pkgs.zsh;
+      openssh.authorizedKeys.keyFiles = [ ./data/id_gthm.pub ];
+      packages = with pkgs; [ git ];
+    };
+
+    gmagnusson = {
+      isNormalUser = true;
+      createHome = true;
+      home = "/home/gmagnusson";
+      hashedPassword =
+        "$6$MnpM67SJuDE$rGzRwnfcsesW1M98cdOBlQaukWP4rEKefGuSdBlihKK1pQWCjoxqXxT3poT4ti7OUr.BU3WCxZTHaqD7TAsnF1";
+      shell = pkgs.zsh;
+      openssh.authorizedKeys.keyFiles = [ ./data/id_gthm.pub ];
+      packages = with pkgs; [ git irssi ];
+    };
   };
 
 }
