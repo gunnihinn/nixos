@@ -11,11 +11,26 @@
     };
   };
 
-  services.lorri.enable = true;
+  services = {
+    lorri.enable = true;
 
-  services.emacs = {
-    enable = true;
-    package = import ./emacs.nix { inherit pkgs; };
+    emacs = {
+      enable = true;
+      package = import ./emacs.nix { inherit pkgs; };
+    };
+
+    borgbackup.jobs."gmagnusson-home" = {
+      encryption = {
+        mode = "repokey-blake2";
+        passCommand = "pass show borg/gmagnusson-home";
+      };
+      exclude = [ "/home/*/.cache" ];
+      paths = [ "/home/gmagnusson" ];
+      repo = "11788@ch-s011.rsync.net:./gmagnusson-home";
+      user = "gmagnusson";
+      group = "users";
+      startAt = "*-*-* 12:00:00";
+    };
   };
 
   systemd.user.services.mbsync = {
@@ -71,7 +86,6 @@
 
       # sql
       sqlite-interactive
-      python38Packages.sqlparse
 
       # shell
       shfmt
@@ -94,6 +108,7 @@
       pinentry-curses
 
       mkpasswd
+      pass
     ];
 
   };

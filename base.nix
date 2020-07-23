@@ -29,6 +29,7 @@
 
     # sysadmin
     bind
+    borgbackup
     htop
     inetutils
     netcat
