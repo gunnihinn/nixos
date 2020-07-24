@@ -45,6 +45,7 @@ in emacsWithPackages (epkgs:
     solarized-theme
     use-package
     visual-fill-column
+    yaml-mode
   ]) ++ [
     pkgs.notmuch # From main packages set
   ])
