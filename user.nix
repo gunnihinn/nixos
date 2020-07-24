@@ -22,11 +22,12 @@
     borgbackup.jobs."gmagnusson-home" = {
       encryption = {
         mode = "repokey-blake2";
-        passCommand = "pass show borg/gmagnusson-home";
+        passCommand = "${pkgs.pass}/bin/pass show borg/gmagnusson-home";
       };
+      environment = { BORG_REMOTE_PATH = "borg1"; };
       exclude = [ "/home/*/.cache" ];
       paths = [ "/home/gmagnusson" ];
-      repo = "11788@ch-s011.rsync.net:./gmagnusson-home";
+      repo = "11788@ch-s011.rsync.net:gmagnusson-home";
       user = "gmagnusson";
       group = "users";
       startAt = "*-*-* 12:00:00";
