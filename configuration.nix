@@ -21,7 +21,11 @@
 
   networking.hostName = "booking"; # Define your hostname.
   networking.interfaces.wlo1.useDHCP = true;
-  networking.hosts = { "64.225.73.140" = [ "sky" ]; };
+  networking.hosts = {
+    "64.225.73.140" = [ "sky" ];
+    "134.122.53.95" = [ "gthm" ];
+    "68.183.12.154" = [ "gthmcloud" ];
+  };
 
   time.timeZone = "Europe/Amsterdam";
 
