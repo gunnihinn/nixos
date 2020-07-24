@@ -80,4 +80,18 @@
     };
   };
 
+  security.acme.acceptTerms = true;
+  security.acme.email = "gunnar@magnusson.io";
+  services.nginx = {
+    enable = true;
+    virtualHosts = {
+      "gthm.is" = {
+        forceSSL = true;
+        enableACME = true;
+        serverAliases = [ "www.gthm.is" ];
+        locations."/" = { root = "/var/www"; };
+      };
+    };
+  };
+
 }
