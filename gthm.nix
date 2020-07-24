@@ -12,6 +12,8 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
+
   nix.gc = {
     automatic = true;
     dates = "weekly";
