@@ -1,4 +1,4 @@
-{ pkgs, modulesPath, lib, ... }:
+{ config, pkgs, modulesPath, lib, ... }:
 
 {
   imports = [ (modulesPath + "/virtualisation/digital-ocean-config.nix") ];
@@ -92,6 +92,12 @@
         enableACME = true;
         serverAliases = [ "www.gthm.is" ];
         locations."/" = { root = "/var/www"; };
+      };
+
+      "git.gthm.is" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = { root = "${config.services.gitweb.projectroot}"; };
       };
     };
 
