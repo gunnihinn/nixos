@@ -90,7 +90,7 @@
       "gthm.is" = {
         forceSSL = true;
         enableACME = true;
-        serverAliases = [ "www.gthm.is" "wiki.gthm.is" ];
+        serverAliases = [ "www.gthm.is" ];
         locations."/" = { root = "/var/www"; };
       };
     };
@@ -98,12 +98,10 @@
 
   services.dokuwiki = {
     enable = true;
-    nginx = {
-      acl = "* @ALL 16";
-      serverName = "wiki.gthm.is";
-      enableACME = false;
-      useACMEHost = "gthm.is";
-    };
+    acl = ''
+      * @ALL 1
+      * gmagnusson 16'';
+    nginx = { serverName = "wiki.gthm.is"; };
+    usersFile = ./data/dokuwiki-users.txt;
   };
-
 }
