@@ -60,7 +60,6 @@
   users.users = {
     janitor = {
       isNormalUser = true;
-      createHome = true;
       home = "/home/janitor";
       extraGroups = [ "wheel" ];
       hashedPassword =
@@ -72,13 +71,20 @@
 
     gmagnusson = {
       isNormalUser = true;
-      createHome = true;
       home = "/home/gmagnusson";
       hashedPassword =
         "$6$MnpM67SJuDE$rGzRwnfcsesW1M98cdOBlQaukWP4rEKefGuSdBlihKK1pQWCjoxqXxT3poT4ti7OUr.BU3WCxZTHaqD7TAsnF1";
       shell = pkgs.zsh;
       openssh.authorizedKeys.keyFiles = [ ./data/id_gthm.pub ];
       packages = with pkgs; [ git irssi ];
+    };
+
+    git = {
+      createHome = true;
+      home = "/srv/git";
+      openssh.authorizedKeys.keyFiles = [ ./data/id_gthm.pub ];
+      packages = with pkgs; [ git ];
+      shell = "${pkgs.git/bin/git-shell}";
     };
   };
 
@@ -97,13 +103,12 @@
       "git.gthm.is" = {
         forceSSL = true;
         enableACME = true;
-        locations."/" = { root = "${config.services.gitweb.projectroot}"; };
       };
     };
 
     gitweb = {
       enable = true;
-      location = "/";
+      location = "";
       virtualHost = "git.gthm.is";
     };
   };
