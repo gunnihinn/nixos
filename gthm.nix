@@ -94,16 +94,11 @@
         locations."/" = { root = "/var/www"; };
       };
     };
-  };
 
-  services.gitweb = {
-    enable = true;
-    location = "/";
-    virtualHost = {
-      "git.gthm.is" = {
-        forceSSL = true;
-        enableACME = true;
-      };
+    gitweb = {
+      enable = true;
+      location = "/";
+      virtualHost = "git.gthm.is";
     };
   };
 
