@@ -93,12 +93,16 @@
         serverAliases = [ "www.gthm.is" ];
         locations."/" = { root = "/var/www"; };
       };
+    };
+  };
+
+  gitweb = {
+    enable = true;
+    location = "/";
+    virtualHost = {
       "git.gthm.is" = {
         forceSSL = true;
         enableACME = true;
-        locations."/" = {
-          proxyPass = "http://localhost:${services.gogs.httpPort}";
-        };
       };
     };
   };
@@ -112,9 +116,6 @@
     usersFile = ./data/dokuwiki-users.txt;
   };
 
-  services.gogs = {
-    enable = true;
-    cookieSecure = true;
-    httpPort = 3000;
-  };
+  services.gitweb = { gitwebTheme = true; };
+
 }
