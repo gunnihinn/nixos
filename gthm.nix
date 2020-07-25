@@ -99,7 +99,9 @@
   services.dokuwiki = {
     enable = true;
     nginx = {
+      acl = "* @ALL 16";
       serverName = "wiki.gthm.is";
+      enableACME = false;
       useACMEHost = "gthm.is";
     };
   };
