@@ -96,7 +96,7 @@
     };
   };
 
-  gitweb = {
+  services.gitweb = {
     enable = true;
     location = "/";
     virtualHost = {
