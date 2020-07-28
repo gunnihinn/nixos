@@ -79,13 +79,6 @@
       packages = with pkgs; [ git irssi ];
     };
 
-    git = {
-      createHome = true;
-      home = "/srv/git";
-      openssh.authorizedKeys.keyFiles = [ ./data/id_gthm.pub ];
-      packages = with pkgs; [ git ];
-      shell = "${pkgs.git/bin/git-shell}";
-    };
   };
 
   security.acme.acceptTerms = true;
@@ -103,14 +96,14 @@
       "git.gthm.is" = {
         forceSSL = true;
         enableACME = true;
+        locations."/" = { proxyPass = "http://localhost:3000"; };
       };
     };
+  };
 
-    gitweb = {
-      enable = true;
-      location = "";
-      virtualHost = "git.gthm.is";
-    };
+  services.gitea = {
+    enable = true;
+    cookieSecure = true;
   };
 
   services.dokuwiki = {
@@ -121,7 +114,5 @@
     nginx = { serverName = "wiki.gthm.is"; };
     usersFile = ./data/dokuwiki-users.txt;
   };
-
-  services.gitweb = { gitwebTheme = true; };
 
 }
