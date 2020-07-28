@@ -109,7 +109,7 @@
     enable = true;
     cookieSecure = true;
     disableRegistration = true;
-    rootURL = "https://git.gthm.is/";
+    rootUrl = "https://git.gthm.is/";
   };
 
   services.dokuwiki = {
