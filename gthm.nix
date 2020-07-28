@@ -104,6 +104,7 @@
   services.gitea = {
     enable = true;
     cookieSecure = true;
+    disableRegistration = true;
   };
 
   services.dokuwiki = {
