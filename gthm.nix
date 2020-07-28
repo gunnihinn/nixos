@@ -96,7 +96,11 @@
       "git.gthm.is" = {
         forceSSL = true;
         enableACME = true;
-        locations."/" = { proxyPass = "http://localhost:3000"; };
+        locations."/" = {
+          proxyPass = "http://${config.services.gitea.httpAddress}:${
+              toString config.services.gitea.httpPort
+            }";
+        };
       };
     };
   };
@@ -105,6 +109,7 @@
     enable = true;
     cookieSecure = true;
     disableRegistration = true;
+    rootURL = "https://git.gthm.is/";
   };
 
   services.dokuwiki = {
